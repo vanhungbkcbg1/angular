@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<div ng-app="myapp" ng-controller="mycontroller">
+    <ul>
+            <li>{{firstName}}</li>
+            <li>{{lastName}}</li>
+            <li ng-repeat="x in datas">
+                <a ng-if="(x.name=='vanhung')">fd</a>
+                <a ng-if="!(x.name=='vanhung')">fsdfsdfs</a>
+            </li>
+    </ul>
+    <button ng-click="click()">click</button>
+</div>
+<script>
+
+    var app = angular.module('myapp', []);
+    app.controller('mycontroller', function($scope) {
+        $scope.firstName = "John";
+        $scope.lastName = "Doe";
+        $scope.click=function()
+        {
+            $scope.firstName="click"
+        };
+        $scope.datas=[
+            {"name":"vanhungs","age":"12"},
+            {"name":"vanhungs","age":"13"},
+            {"name":"vanhung","age":"14"},
+            {"name":"vanhung","age":"15"}
+
+        ];
+        $scope.check=function(value)
+        {
+            if(value=="vanhung")
+            {
+                return true;
+            }
+            return false;
+        };
+    });
+</script>
+</body>
+</html>
